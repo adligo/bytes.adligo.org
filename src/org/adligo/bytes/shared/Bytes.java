@@ -4,6 +4,8 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import org.adligo.i_bytes.shared.I_Bytes;
+
 /**
  * This class is a immutable representation of bytes, which mimics immutability
  * by providing a view of a underlying byte array or ByteArrays. Mimicking
@@ -37,12 +39,11 @@ import java.util.function.Supplier;
  * limitations under the License.
  * </code><pre>
  */
-public class Bytes {
-  public static final String END_EXCEPTION_1 = "The End ";
-  public static final String END_EXCEPTION_2 = " MUST be in the bytes bounds ";
-  public static final String START_END_EXCEPTION_1 = "The Start ";
-  public static final String START_END_EXCEPTION_2 = " MUST be after the End ";
-
+public class Bytes implements I_Bytes {
+  public static final String HEX_CHARS = "0123456789abcdef";
+  // 084c 2a6d 195e 3b7f
+  public static final String HEX_CHARS_REVERSED = "084c2a6d195e3b7f";
+  
   public static final byte U0 = 0x00;
   public static final byte U1 = 0x01;
   public static final byte U2 = 0x02;
@@ -314,6 +315,276 @@ public class Bytes {
   public static final byte U253 = (byte) 0xfd;
   public static final byte U254 = (byte) 0xfe;
   public static final byte U255 = (byte) 0xff;
+
+  public byte reverse(byte b) {
+    switch (b) {
+      case U0: return (byte) 0x00;
+      case U1: return (byte) 0x80;
+      case U2: return (byte) 0x40;
+      case U3: return (byte) 0xc0;
+      case U4: return (byte) 0x20;
+      case U5: return (byte) 0xa0;
+      case U6: return (byte) 0x60;
+      case U7: return (byte) 0xd0;
+      case U8: return (byte) 0x10;
+      case U9: return (byte) 0x90;
+      case U10: return (byte) 0x50;
+      case U11: return (byte) 0xe0;
+      case U12: return (byte) 0x30;
+      case U13: return (byte) 0xb0;
+      case U14: return (byte) 0x70;
+      case U15: return (byte) 0xf0;
+      case U16: return (byte) 0x08;
+      case U17: return (byte) 0x88;
+      case U18: return (byte) 0x48;
+      case U19: return (byte) 0xc8;
+      case U20: return (byte) 0x28;
+      case U21: return (byte) 0xa8;
+      case U22: return (byte) 0x68;
+      case U23: return (byte) 0xd8;
+      case U24: return (byte) 0x18;
+      case U25: return (byte) 0x98;
+      case U26: return (byte) 0x58;
+      case U27: return (byte) 0xe8;
+      case U28: return (byte) 0x38;
+      case U29: return (byte) 0xb8;
+      case U30: return (byte) 0x78;
+      case U31: return (byte) 0xf8;
+      case U32: return (byte) 0x04;
+      case U33: return (byte) 0x84;
+      case U34: return (byte) 0x44;
+      case U35: return (byte) 0xc4;
+      case U36: return (byte) 0x24;
+      case U37: return (byte) 0xa4;
+      case U38: return (byte) 0x64;
+      case U39: return (byte) 0xd4;
+      case U40: return (byte) 0x14;
+      case U41: return (byte) 0x94;
+      case U42: return (byte) 0x54;
+      case U43: return (byte) 0xe4;
+      case U44: return (byte) 0x34;
+      case U45: return (byte) 0xb4;
+      case U46: return (byte) 0x74;
+      case U47: return (byte) 0xf4;
+      case U48: return (byte) 0x0c;
+      case U49: return (byte) 0x8c;
+      case U50: return (byte) 0x4c;
+      case U51: return (byte) 0xcc;
+      case U52: return (byte) 0x2c;
+      case U53: return (byte) 0xac;
+      case U54: return (byte) 0x6c;
+      case U55: return (byte) 0xdc;
+      case U56: return (byte) 0x1c;
+      case U57: return (byte) 0x9c;
+      case U58: return (byte) 0x5c;
+      case U59: return (byte) 0xec;
+      case U60: return (byte) 0x3c;
+      case U61: return (byte) 0xbc;
+      case U62: return (byte) 0x7c;
+      case U63: return (byte) 0xfc;
+      case U64: return (byte) 0x02;
+      case U65: return (byte) 0x82;
+      case U66: return (byte) 0x42;
+      case U67: return (byte) 0xc2;
+      case U68: return (byte) 0x22;
+      case U69: return (byte) 0xa2;
+      case U70: return (byte) 0x62;
+      case U71: return (byte) 0xd2;
+      case U72: return (byte) 0x12;
+      case U73: return (byte) 0x92;
+      case U74: return (byte) 0x52;
+      case U75: return (byte) 0xe2;
+      case U76: return (byte) 0x32;
+      case U77: return (byte) 0xb2;
+      case U78: return (byte) 0x72;
+      case U79: return (byte) 0xf2;
+      case U80: return (byte) 0x0a;
+      case U81: return (byte) 0x8a;
+      case U82: return (byte) 0x4a;
+      case U83: return (byte) 0xca;
+      case U84: return (byte) 0x2a;
+      case U85: return (byte) 0xaa;
+      case U86: return (byte) 0x6a;
+      case U87: return (byte) 0xda;
+      case U88: return (byte) 0x1a;
+      case U89: return (byte) 0x9a;
+      case U90: return (byte) 0x5a;
+      case U91: return (byte) 0xea;
+      case U92: return (byte) 0x3a;
+      case U93: return (byte) 0xba;
+      case U94: return (byte) 0x7a;
+      case U95: return (byte) 0xfa;
+      case U96: return (byte) 0x06;
+      case U97: return (byte) 0x86;
+      case U98: return (byte) 0x46;
+      case U99: return (byte) 0xc6;
+      case U100: return (byte) 0x26;
+      case U101: return (byte) 0xa6;
+      case U102: return (byte) 0x66;
+      case U103: return (byte) 0xd6;
+      case U104: return (byte) 0x16;
+      case U105: return (byte) 0x96;
+      case U106: return (byte) 0x56;
+      case U107: return (byte) 0xe6;
+      case U108: return (byte) 0x36;
+      case U109: return (byte) 0xb6;
+      case U110: return (byte) 0x76;
+      case U111: return (byte) 0xf6;
+      case U112: return (byte) 0x0d;
+      case U113: return (byte) 0x8d;
+      case U114: return (byte) 0x4d;
+      case U115: return (byte) 0xcd;
+      case U116: return (byte) 0x2d;
+      case U117: return (byte) 0xad;
+      case U118: return (byte) 0x6d;
+      case U119: return (byte) 0xdd;
+      case U120: return (byte) 0x1d;
+      case U121: return (byte) 0x9d;
+      case U122: return (byte) 0x5d;
+      case U123: return (byte) 0xed;
+      case U124: return (byte) 0x3d;
+      case U125: return (byte) 0xbd;
+      case U126: return (byte) 0x7d;
+      case U127: return (byte) 0xfd;
+      case U128: return (byte) 0x01;
+      case U129: return (byte) 0x81;
+      case U130: return (byte) 0x41;
+      case U131: return (byte) 0xc1;
+      case U132: return (byte) 0x21;
+      case U133: return (byte) 0xa1;
+      case U134: return (byte) 0x61;
+      case U135: return (byte) 0xd1;
+      case U136: return (byte) 0x11;
+      case U137: return (byte) 0x91;
+      case U138: return (byte) 0x51;
+      case U139: return (byte) 0xe1;
+      case U140: return (byte) 0x31;
+      case U141: return (byte) 0xb1;
+      case U142: return (byte) 0x71;
+      case U143: return (byte) 0xf1;
+      case U144: return (byte) 0x09;
+      case U145: return (byte) 0x89;
+      case U146: return (byte) 0x49;
+      case U147: return (byte) 0xc9;
+      case U148: return (byte) 0x29;
+      case U149: return (byte) 0xa9;
+      case U150: return (byte) 0x69;
+      case U151: return (byte) 0xd9;
+      case U152: return (byte) 0x19;
+      case U153: return (byte) 0x99;
+      case U154: return (byte) 0x59;
+      case U155: return (byte) 0xe9;
+      case U156: return (byte) 0x39;
+      case U157: return (byte) 0xb9;
+      case U158: return (byte) 0x79;
+      case U159: return (byte) 0xf9;
+      case U160: return (byte) 0x05;
+      case U161: return (byte) 0x85;
+      case U162: return (byte) 0x45;
+      case U163: return (byte) 0xc5;
+      case U164: return (byte) 0x25;
+      case U165: return (byte) 0xa5;
+      case U166: return (byte) 0x65;
+      case U167: return (byte) 0xd5;
+      case U168: return (byte) 0x15;
+      case U169: return (byte) 0x95;
+      case U170: return (byte) 0x55;
+      case U171: return (byte) 0xe5;
+      case U172: return (byte) 0x35;
+      case U173: return (byte) 0xb5;
+      case U174: return (byte) 0x75;
+      case U175: return (byte) 0xf5;
+      case U176: return (byte) 0x0e;
+      case U177: return (byte) 0x8e;
+      case U178: return (byte) 0x4e;
+      case U179: return (byte) 0xce;
+      case U180: return (byte) 0x2e;
+      case U181: return (byte) 0xae;
+      case U182: return (byte) 0x6e;
+      case U183: return (byte) 0xde;
+      case U184: return (byte) 0x1e;
+      case U185: return (byte) 0x9e;
+      case U186: return (byte) 0x5e;
+      case U187: return (byte) 0xee;
+      case U188: return (byte) 0x3e;
+      case U189: return (byte) 0xbe;
+      case U190: return (byte) 0x7e;
+      case U191: return (byte) 0xfe;
+      case U192: return (byte) 0x03;
+      case U193: return (byte) 0x83;
+      case U194: return (byte) 0x43;
+      case U195: return (byte) 0xc3;
+      case U196: return (byte) 0x23;
+      case U197: return (byte) 0xa3;
+      case U198: return (byte) 0x63;
+      case U199: return (byte) 0xd3;
+      case U200: return (byte) 0x13;
+      case U201: return (byte) 0x93;
+      case U202: return (byte) 0x53;
+      case U203: return (byte) 0xe3;
+      case U204: return (byte) 0x33;
+      case U205: return (byte) 0xb3;
+      case U206: return (byte) 0x73;
+      case U207: return (byte) 0xf3;
+      case U208: return (byte) 0x0b;
+      case U209: return (byte) 0x8b;
+      case U210: return (byte) 0x4b;
+      case U211: return (byte) 0xcb;
+      case U212: return (byte) 0x2b;
+      case U213: return (byte) 0xab;
+      case U214: return (byte) 0x6b;
+      case U215: return (byte) 0xdb;
+      case U216: return (byte) 0x1b;
+      case U217: return (byte) 0x9b;
+      case U218: return (byte) 0x5b;
+      case U219: return (byte) 0xeb;
+      case U220: return (byte) 0x3b;
+      case U221: return (byte) 0xbb;
+      case U222: return (byte) 0x7b;
+      case U223: return (byte) 0xfb;
+      case U224: return (byte) 0x07;
+      case U225: return (byte) 0x87;
+      case U226: return (byte) 0x47;
+      case U227: return (byte) 0xc7;
+      case U228: return (byte) 0x27;
+      case U229: return (byte) 0xa7;
+      case U230: return (byte) 0x67;
+      case U231: return (byte) 0xd7;
+      case U232: return (byte) 0x17;
+      case U233: return (byte) 0x97;
+      case U234: return (byte) 0x57;
+      case U235: return (byte) 0xe7;
+      case U236: return (byte) 0x37;
+      case U237: return (byte) 0xb7;
+      case U238: return (byte) 0x77;
+      case U239: return (byte) 0xf7;
+      case U240: return (byte) 0x0f;
+      case U241: return (byte) 0x8f;
+      case U242: return (byte) 0x4f;
+      case U243: return (byte) 0xcf;
+      case U244: return (byte) 0x2f;
+      case U245: return (byte) 0xaf;
+      case U246: return (byte) 0x6f;
+      case U247: return (byte) 0xdf;
+      case U248: return (byte) 0x1f;
+      case U249: return (byte) 0x9f;
+      case U250: return (byte) 0x5f;
+      case U251: return (byte) 0xef;
+      case U252: return (byte) 0x3f;
+      case U253: return (byte) 0xbf;
+      case U254: return (byte) 0x7f;
+      case U255: 
+      default: return (byte) 0xff;
+    }
+  }
+  
+  public byte[] reverse(byte[] b) {
+    byte [] r = new byte[b.length];
+    for (int i = 0; i < r.length; i++) {
+      r[r.length - 0] = reverse(b[i]);
+    }
+    return r;
+  }
   
   public static void main(String[] args) {
     System.out.println(Byte.toUnsignedInt(U0));
@@ -336,26 +607,35 @@ public class Bytes {
     }
 
     Bytes b3 = new Bytes(new byte[] { U0, U1, U2 }, 0, 3);
-    for (int i = 0; i < b3.size; i++) {
+    for (int i = 0; i < b3.size(); i++) {
       System.out.println("got " + Byte.toUnsignedInt(b3.get(i)));
     }
+    
+    printReverseByte();
   }
 
+  private static void printReverseByte() {
+    int lcounter = 0;
+    int rcounter = 0;
+    for (int i = 0; i < 256; i++) {
+
+      System.out.println("      case U" + i + ": return (byte) 0x" +
+          HEX_CHARS_REVERSED.charAt(lcounter) +
+          HEX_CHARS_REVERSED.charAt(rcounter) + ";");
+      if (i < 256) {
+        if (lcounter == 15) {
+          lcounter=0;
+          rcounter++;
+        } else {
+          lcounter++;
+        }
+      }
+    }
+  }
   private final byte[] bytes;
-  private final int size;
-  private final int start;
 
   public Bytes(byte[] bytes, int start, int end) {
     this.bytes = Objects.requireNonNull(bytes);
-    if (start > end) {
-      throw new IllegalArgumentException(START_END_EXCEPTION_1 + start + START_END_EXCEPTION_2 + end);
-    }
-    if (end > bytes.length) {
-      throw new IllegalArgumentException(END_EXCEPTION_1 + end + END_EXCEPTION_1 + bytes.length);
-    }
-    this.size = end - start;
-    this.start = start;
-
   }
 
   /**
@@ -365,10 +645,10 @@ public class Bytes {
    * @throws ArrayIndexOutOfBoundsException if the integer is bigger than the size
    */
   public byte get(int i) {
-    return bytes[start + i];
+    return bytes[i];
   }
 
   public int size() {
-    return size;
+    return bytes.length;
   }
 }

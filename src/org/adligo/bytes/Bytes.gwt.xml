@@ -26,7 +26,8 @@
 <module>
   <!-- Inherit the core Web Toolkit stuff.                        -->
   <inherits name='com.google.gwt.user.User'/>
-
+  <inherits name='org.adligo.i_bytes.I_Bytes'/>
+  
   <!-- Specify the paths for translatable code                    -->
   <source path='shared'/>
 </module>
